@@ -12,7 +12,7 @@ public class CustomerService {
     @Autowired
     private CustomerDao customerDao;
 
-    public void addCustomer(Customer customer) {   	 
+    public void addCustomer(Customer customer) {
    	 customerDao.addCustomer(customer);
     }
 

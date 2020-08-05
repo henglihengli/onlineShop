@@ -52,13 +52,13 @@ public class CustomerDao {
 	public Customer getCustomerByUserName(String userName) {
 		User user = null;
 		try (Session session = sessionFactory.openSession()) {
-                    session.beginTransaction();
+            session.beginTransaction();
 			CriteriaBuilder builder = session.getCriteriaBuilder();
 			CriteriaQuery<User> criteriaQuery = builder.createQuery(User.class);
-			Root<User> root = criteriaQuery.from(User.class);
+			Root<User> root = criteriaQuery.from(User.class); // root node of storage tree of database
 			criteriaQuery.select(root).where(builder.equal(root.get("emailId"), userName));
 			user = session.createQuery(criteriaQuery).getSingleResult();
-                    session.getTransaction().commit();
+            session.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
