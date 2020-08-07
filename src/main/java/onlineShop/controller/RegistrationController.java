@@ -11,18 +11,21 @@ import org.springframework.web.servlet.ModelAndView;
 import onlineShop.model.Customer;
 import onlineShop.service.CustomerService;
 
+// Need to register in dispatcherservlet, must use controller
 @Controller
 public class RegistrationController {
 	
 	@Autowired
 	private CustomerService customerService;
-
+	
+	// Get information from front-end and do analysis in the back-end
 	@RequestMapping(value = "/customer/registration", method = RequestMethod.GET)
 	public ModelAndView getRegistrationForm() {
 		Customer customer = new Customer();
 		return new ModelAndView("register", "customer", customer);
 	}
-
+	
+	// Return with updated information and update front-end objects
 	@RequestMapping(value = "/customer/registration", method = RequestMethod.POST)
 	public ModelAndView registerCustomer(@ModelAttribute(value = "customer") Customer customer,
 			BindingResult result) {
