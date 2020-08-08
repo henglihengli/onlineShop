@@ -31,6 +31,10 @@
         <transition to="thankCustomer" />
     </action-state>
 
+	<action-state id="saveOrder">
+    	<evaluate expression="salesOrderService.addSalesOrder(order)" />
+    	<transition to="processOrder" />
+    </action-state>
 
     <view-state id="thankCustomer" model="order">
         <transition to="endState" />
